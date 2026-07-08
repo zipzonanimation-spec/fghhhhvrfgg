@@ -1,0 +1,25 @@
+name: Build APK with Godot
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Muat turun Godot
+        run: |
+          wget https://github.com/godotengine/godot/releases/download/4.6.3-stable/Godot_v4.6.3-stable_linux.x86_64.zip
+          unzip Godot_v4.6.3-stable_linux.x86_64.zip
+
+      - name: Eksport APK
+        run: |
+          ./Godot_v4.6.3-stable_linux.x86_64 --headless --export-release Android
+
+      - name: Muat naik APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: APK
+          path: "*.apk"
