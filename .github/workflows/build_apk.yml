@@ -16,7 +16,7 @@ jobs:
 
       - name: Eksport APK
         run: |
-          ./Godot_v4.6.3-stable_linux.x86_64 --headless --export-release Android
+          ./Godot_v4.6.3-stable_linux.x86_64 --headless --path . --export-release Android
 
       - name: Muat naik APK
         uses: actions/upload-artifact@v4
